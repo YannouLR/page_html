@@ -1,1 +1,6 @@
-.env
+APP_HOST=localhost
+APP_BDD=classe
+APP_USER=root
+APP_PASS=
+APP_CHARSET=utf8
+APP_PORT=3306

@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php 
-    require_once './config.php';
 
-?>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,8 +23,13 @@
         <!-- Ici ma barre de navigation (navbar) -->
     </header>
     <main>
-        <section class="position-left">
+        <section>
+            <div class="position-left">
             Ici mon menu de gauche
+            </div>
+            <button id="changeColor" onclick="changeColor()">
+                Changer la couleur
+            </button>
         </section>
 
         <section id="container">
@@ -76,44 +78,42 @@
         </section>
 
         <section>
-            <?php
-                $req = $pdo->prepare("SELECT DISTINCT `type` FROM personne");
-                $req->execute();
-                $oTypes = $req->fetchAll();
-                // foreach ($oTypes as $key => $value) { 
-                //     var_dump($key);
-                //     var_dump($value);
-                // }
-            ?>
+
 
             Formulaire d'inscription
             <form action="formulaire.php" method="post" >
                 <label> Nom </label>
-                <input type="text" name="lastname" maxlength="15" required/>
+                <input type="text" name="lastname" id="lastname" maxlength="15" required/>
                 </br>
                 <label> Prénom </label>
-                <input type="firstname" name="firstname" maxlength="255" required/>
+                <input type="firstname" name="firstname" id="firstname" maxlength="255" required/>
                 </br>
                 <label> Age </label>
-                <input type="number" name="age" min="18" max="90" required/>
+                <input type="number" name="age" id="age" min="18" max="90" required/>
                 </br>
                 <label> Adresse </label>
-                <input type="text" name="address" maxlength="100" required/>
+                <input type="text" name="address" id="address" maxlength="100" required/>
                 </br>
                 <label> Qualification </label>
                 </br>
                 <select name="person_type" id="person_type">
-                    <?php
-                        foreach ($oTypes as $key => $value) {
-                    ?>
-                            <option value="<?=$value['type']?>"> <?=$value['type']?> </option>
-                    <?php        
-                        }
-                    ?>
+
                 </select>
 
                 <input type="submit" id="validate" value="Valider" />
             </form>
+        </section>
+        <section>
+            <form>
+                <label>nombre 1: </label>
+                <input type="number" name="nb1" id="nb1">
+                <br>
+                <label>nombre 2: </label>
+                <input type="number" name="nb2" id="nb2">
+                <br>
+            </form>
+            <button id="multiply">Multiplier</button>
+            <div id='resultat'></div>
         </section>
         <div>
             <small> Contenu de mon site</small>
@@ -122,6 +122,7 @@
 </body>
 
 <footer>
+    <script src="./function.js"> </script>
     <div>
         &copy; Alaji 2021
     </div>

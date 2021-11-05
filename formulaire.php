@@ -13,7 +13,7 @@ if ( isset($password) ) {
 } else {
     $password = null;
 }
-
+    
 $email = $_POST["email"];
 
 $stmt = $pdo->prepare("INSERT INTO `personne` (`prenom` ,`password`, `email`) VALUES (:username, :mdp, :email)");
